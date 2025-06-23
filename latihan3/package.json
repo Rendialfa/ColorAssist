@@ -1,0 +1,11 @@
+{
+  "name": "latihan3",
+  "version": "20.17.0",
+  "description": "latihan3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RendiAlfa",
+  "license": "ISC"
+}
