@@ -16,7 +16,10 @@ genai.configure(api_key=gemini_api_key)
 model = None
 if gemini_api_key:
     try:
-        model = genai.GenerativeModel('gemini-pro-vision')
+        # PERBAIKAN DI SINI:
+        # Mengubah model dari 'gemini-pro-vision' (yang sudah deprecated)
+        # menjadi 'gemini-1.5-flash' (model yang direkomendasikan).
+        model = genai.GenerativeModel('gemini-1.5-flash')
         print("Gemini model initialized successfully.")
     except Exception as e:
         print(f"Error initializing Gemini model: {e}")
