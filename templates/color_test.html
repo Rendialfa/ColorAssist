@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tes Warna Sederhana - ColorAssist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">ColorAssist</div>
+            <div class="sidebar-icons">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-times" id="closeSidebar"></i>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/" class="sidebar-link"><i class="fas fa-info-circle"></i> Tentang & Deteksi Dasar</a></li>
+            <li><a href="/advanced_detection" class="sidebar-link"><i class="fas fa-magnifying-glass-chart"></i> Deteksi Warna Lanjutan</a></li>
+            <li><a href="/color_palette" class="sidebar-link"><i class="fas fa-brush"></i> Palet Warna & Harmoni</a></li>
+            <li><a href="/color_test" class="sidebar-link active" id="colorTestLink"><i class="fas fa-palette"></i> Tes Warna Sederhana</a></li>
+        </ul>
+    </div>
+
+    <div id="sidebarOverlay"></div>
+
+    <div id="mainContentWrapper">
+        <header>
+            <div class="header-left">
+                <i class="fas fa-bars" id="menuToggle"></i>
+                <h1>Tes Warna Sederhana</h1>
+            </div>
+            <div class="header-right">
+                <i class="fas fa-search" id="mainSearchIcon"></i>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="section full-width">
+                <div class="accordion-header active" id="colorTestHeader">
+                    <h2>Tes Pilihan Warna Sederhana <i class="fas fa-chevron-up arrow-icon"></i></h2>
+                </div>
+                <div class="accordion-content open" id="colorTestContent" style="max-height: fit-content; display: block;">
+                    <p>Pilih kotak warna yang sesuai dengan instruksi. Tes ini membantu mendeteksi jenis buta warna.</p>
+                    <div id="colorTestQuestions">
+                        <p>Memuat pertanyaan tes...</p>
+                    </div>
+                    <button id="submitColorTest" style="display: none;">Selesai Tes</button>
+                    <p id="colorTestResult" class="result-text" style="display: none;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/color_test_script.js') }}"></script>
+</body>
+</html>
