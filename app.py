@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for # Tambahkan 'redirect' dan 'url_for'
 import google.generativeai as genai
 from PIL import Image
 import io
@@ -16,9 +16,6 @@ genai.configure(api_key=gemini_api_key)
 model = None
 if gemini_api_key:
     try:
-        # PERBAIKAN DI SINI:
-        # Mengubah model dari 'gemini-pro-vision' (yang sudah deprecated)
-        # menjadi 'gemini-1.5-flash' (model yang direkomendasikan).
         model = genai.GenerativeModel('gemini-1.5-flash')
         print("Gemini model initialized successfully.")
     except Exception as e:
@@ -27,7 +24,6 @@ if gemini_api_key:
 
 @app.route('/')
 def index():
-    # Halaman utama sekarang adalah deskripsi aplikasi
     return render_template('index.html')
 
 @app.route('/color_test')
@@ -36,12 +32,13 @@ def color_test():
 
 @app.route('/advanced_detection')
 def advanced_detection():
-    # Halaman ini sekarang berisi fitur unggah dan kamera
-    return render_template('advanced_detection.html')
+    # Mengalihkan ke halaman utama karena halaman aslinya dihapus
+    return redirect(url_for('index')) # Akan mengalihkan ke fungsi index()
 
 @app.route('/color_palette')
 def color_palette():
-    return render_template('color_palette.html')
+    # Mengalihkan ke halaman utama karena halaman aslinya dihapus
+    return redirect(url_for('index')) # Akan mengalihkan ke fungsi index()
 
 # (Sisa kode untuk /upload dan /stream_analysis tetap sama)
 @app.route('/upload', methods=['POST'])
@@ -91,5 +88,4 @@ def stream_analysis():
     return jsonify({'error': 'Unknown error'}), 500
 
 if __name__ == '__main__':
-    # Untuk produksi, ubah debug=False
-    app.run(debug=False, host='0.0.0.0') # Pertahankan host='0.0.0.0' jika ingin diakses dari perangkat lain
+    app.run(debug=False, host='0.0.0.0')
