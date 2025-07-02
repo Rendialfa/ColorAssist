@@ -1,71 +1,33 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ColorAssist - Bantuan Deteksi Warna</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
+{% extends "base.html" %} {# Memberitahu Jinja2 untuk mewarisi dari base.html #}
 
-    <div id="sidebar">
-        <div class="sidebar-header">
-            <div class="logo">ColorAssist</div>
-            <div class="sidebar-icons">
-                <i class="fas fa-search"></i>
-                <i class="fas fa-times" id="closeSidebar"></i>
-            </div>
-        </div>
-        <ul class="sidebar-menu">
-            <li><a href="/" class="sidebar-link active"><i class="fas fa-info-circle"></i> Tentang & Deteksi Dasar</a></li>
-            <li><a href="/color_test" class="sidebar-link" id="colorTestLink"><i class="fas fa-palette"></i> Tes Warna Sederhana</a></li>
-        </ul>
+{% block title %}ColorAssist - Bantuan Deteksi Warna{% endblock %} {# Mengisi judul tab browser #}
+{% block page_title %}ColorAssist{% endblock %} {# Mengisi judul di header halaman #}
+
+{% block content %} {# Konten unik untuk halaman Index.html #}
+    <div class="section">
+        <h2>Selamat Datang di ColorAssist!</h2>
+        <p>ColorAssist adalah aplikasi inovatif yang dirancang untuk membantu Anda memahami, mendeteksi, dan bekerja dengan warna secara lebih efektif.</p>
+        <p>Dengan memanfaatkan kecerdasan buatan, ColorAssist menyediakan berbagai fitur untuk analisis warna, mulai dari mendeteksi warna dominan pada gambar hingga membantu individu dengan buta warna untuk mengidentifikasi nuansa yang sulit dibedakan.</p>
+        <p>Misi kami adalah membuat dunia warna lebih mudah diakses dan dipahami oleh semua orang. Mulailah menjelajahi fitur-fitur kami sekarang!</p>
     </div>
 
-    <div id="sidebarOverlay"></div>
-
-    <div id="mainContentWrapper">
-        <header>
-            <div class="header-left">
-                <i class="fas fa-bars" id="menuToggle"></i>
-                <h1>ColorAssist</h1>
-            </div>
-            <div class="header-right">
-                <i class="fas fa-search" id="mainSearchIcon"></i>
-            </div>
-        </header>
-
-        <div class="container">
-            <div class="section">
-                <h2>Selamat Datang di ColorAssist!</h2>
-                <p>ColorAssist adalah aplikasi inovatif yang dirancang untuk membantu Anda memahami, mendeteksi, dan bekerja dengan warna secara lebih efektif.</p>
-                <p>Dengan memanfaatkan kecerdasan buatan, ColorAssist menyediakan berbagai fitur untuk analisis warna, mulai dari mendeteksi warna dominan pada gambar hingga membantu individu dengan buta warna untuk mengidentifikasi nuansa yang sulit dibedakan.</p>
-                <p>Misi kami adalah membuat dunia warna lebih mudah diakses dan dipahami oleh semua orang. Mulailah menjelajahi fitur-fitur kami sekarang!</p>
-            </div>
-
-            <div class="section">
-                <h2>Unggah Foto</h2>
-                <input type="file" id="imageUpload" accept="image/*">
-                <button id="uploadButton">Deteksi Warna</button>
-                <div class="image-preview">
-                    <img id="uploadedImage" style="max-width: 100%; height: auto; display: none; margin-top: 15px;">
-                </div>
-                <p>Analisis Gemini: <pre id="uploadedGeminiResult" class="result-text"></pre></p>
-            </div>
-
-            <div class="section">
-                <h2>Deteksi Real-time (Kamera)</h2>
-                <video id="cameraFeed" autoplay playsinline></video>
-                <button id="startCameraButton">Mulai Kamera</button>
-                <button id="stopCameraButton" style="display: none;">Hentikan Kamera</button>
-                <button id="captureButton" style="display: none;">Ambil & Analisis</button>
-                <canvas id="canvas" style="display: none;"></canvas>
-                <p>Analisis Gemini (Kamera): <pre id="cameraGeminiResult" class="result-text"></pre></p>
-            </div>
+    <div class="section">
+        <h2>Unggah Foto</h2>
+        <input type="file" id="imageUpload" accept="image/*">
+        <button id="uploadButton">Deteksi Warna</button>
+        <div class="image-preview">
+            <img id="uploadedImage" style="max-width: 100%; height: auto; display: none; margin-top: 15px;">
         </div>
+        <p>Analisis Gemini: <pre id="uploadedGeminiResult" class="result-text"></pre></p>
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+    <div class="section">
+        <h2>Deteksi Real-time (Kamera)</h2>
+        <video id="cameraFeed" autoplay playsinline></video>
+        <button id="startCameraButton">Mulai Kamera</button>
+        <button id="stopCameraButton" style="display: none;">Hentikan Kamera</button>
+        <button id="captureButton" style="display: none;">Ambil & Analisis</button>
+        <canvas id="canvas" style="display: none;"></canvas>
+        <p>Analisis Gemini (Kamera): <pre id="cameraGeminiResult" class="result-text"></pre></p>
+    </div>
+{% endblock %}
