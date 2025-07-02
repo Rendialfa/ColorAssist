@@ -138,10 +138,17 @@ header h1 {
 
 /* Main Content Wrapper */
 #mainContentWrapper {
-    margin-left: 0;
-    transition: margin-left 0.3s ease-in-out;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    max-width: 1200px; /* Batasi lebar maksimal, sesuaikan sesuai kebutuhan */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.welcome-card { /* Ganti ini dengan class atau ID card selamat datang Anda */
+    max-width: 600px; /* Batasi lebar card ini saja */
+    margin-left: 15px; /* Atau gunakan margin: auto untuk tengah */
+    margin-right: 15px;
+    padding: 20px; /* Padding internal untuk teks */
 }
 
 body.sidebar-open #mainContentWrapper {
